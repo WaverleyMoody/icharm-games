@@ -1,0 +1,201 @@
+name,country,lat,lon,continent
+New York,USA,40.71,-74.01,North America
+Los Angeles,USA,34.05,-118.24,North America
+Chicago,USA,41.88,-87.63,North America
+Houston,USA,29.76,-95.37,North America
+Phoenix,USA,33.45,-112.07,North America
+Philadelphia,USA,39.95,-75.17,North America
+San Antonio,USA,29.42,-98.49,North America
+San Diego,USA,32.72,-117.16,North America
+Dallas,USA,32.78,-96.8,North America
+Austin,USA,30.27,-97.74,North America
+San Francisco,USA,37.77,-122.42,North America
+Seattle,USA,47.61,-122.33,North America
+Denver,USA,39.74,-104.99,North America
+"Washington, D.C.",USA,38.91,-77.04,North America
+Boston,USA,42.36,-71.06,North America
+Nashville,USA,36.16,-86.78,North America
+Las Vegas,USA,36.17,-115.14,North America
+Portland,USA,45.52,-122.68,North America
+Detroit,USA,42.33,-83.05,North America
+Atlanta,USA,33.75,-84.39,North America
+Miami,USA,25.76,-80.19,North America
+Minneapolis,USA,44.98,-93.27,North America
+New Orleans,USA,29.95,-90.07,North America
+Salt Lake City,USA,40.76,-111.89,North America
+Kansas City,USA,39.1,-94.58,North America
+St. Louis,USA,38.63,-90.2,North America
+Indianapolis,USA,39.77,-86.16,North America
+Anchorage,USA,61.22,-149.9,North America
+Fairbanks,USA,64.84,-147.72,North America
+Honolulu,USA,21.31,-157.86,Oceania
+Orlando,USA,28.54,-81.38,North America
+Tampa,USA,27.95,-82.46,North America
+Charlotte,USA,35.23,-80.84,North America
+Pittsburgh,USA,40.44,-80,North America
+Cleveland,USA,41.5,-81.69,North America
+Albuquerque,USA,35.08,-106.65,North America
+Sacramento,USA,38.58,-121.49,North America
+Memphis,USA,35.15,-90.05,North America
+Oklahoma City,USA,35.47,-97.52,North America
+Buffalo,USA,42.89,-78.88,North America
+El Paso,USA,31.76,-106.49,North America
+Tucson,USA,32.22,-110.97,North America
+Toronto,Canada,43.65,-79.38,North America
+Montréal,Canada,45.5,-73.57,North America
+Vancouver,Canada,49.28,-123.12,North America
+Calgary,Canada,51.05,-114.07,North America
+Edmonton,Canada,53.55,-113.49,North America
+Ottawa,Canada,45.42,-75.7,North America
+Winnipeg,Canada,49.9,-97.14,North America
+Halifax,Canada,44.65,-63.58,North America
+Nuuk,Greenland,64.18,-51.72,North America
+Mexico City,Mexico,19.43,-99.13,North America
+Guadalajara,Mexico,20.66,-103.35,North America
+Monterrey,Mexico,25.69,-100.32,North America
+Tijuana,Mexico,32.51,-117.04,North America
+Cancún,Mexico,21.16,-86.85,North America
+Havana,Cuba,23.11,-82.37,North America
+San Juan,Puerto Rico,18.47,-66.11,North America
+Santo Domingo,Dominican Republic,18.49,-69.93,North America
+Panama City,Panama,8.98,-79.52,North America
+San José,Costa Rica,9.93,-84.08,North America
+Bogotá,Colombia,4.71,-74.07,South America
+Medellín,Colombia,6.24,-75.58,South America
+Caracas,Venezuela,10.49,-66.88,South America
+Quito,Ecuador,-0.18,-78.47,South America
+Lima,Peru,-12.05,-77.04,South America
+Cusco,Peru,-13.53,-71.97,South America
+La Paz,Bolivia,-16.5,-68.15,South America
+Manaus,Brazil,-3.12,-60.02,South America
+Brasília,Brazil,-15.79,-47.88,South America
+Rio de Janeiro,Brazil,-22.91,-43.17,South America
+São Paulo,Brazil,-23.55,-46.63,South America
+Montevideo,Uruguay,-34.9,-56.16,South America
+Buenos Aires,Argentina,-34.6,-58.38,South America
+Santiago,Chile,-33.45,-70.67,South America
+Punta Arenas,Chile,-53.16,-70.91,South America
+Reykjavík,Iceland,64.15,-21.94,Europe
+London,UK,51.51,-0.13,Europe
+Manchester,UK,53.48,-2.24,Europe
+Edinburgh,UK,55.95,-3.19,Europe
+Dublin,Ireland,53.35,-6.26,Europe
+Paris,France,48.86,2.35,Europe
+Nice,France,43.7,7.27,Europe
+Marseille,France,43.3,5.37,Europe
+Madrid,Spain,40.42,-3.7,Europe
+Barcelona,Spain,41.39,2.17,Europe
+Seville,Spain,37.39,-5.98,Europe
+Lisbon,Portugal,38.72,-9.14,Europe
+Rome,Italy,41.9,12.5,Europe
+Milan,Italy,45.46,9.19,Europe
+Venice,Italy,45.44,12.32,Europe
+Florence,Italy,43.77,11.26,Europe
+Naples,Italy,40.85,14.27,Europe
+Athens,Greece,37.98,23.73,Europe
+Dubrovnik,Croatia,42.65,18.09,Europe
+Amsterdam,Netherlands,52.37,4.9,Europe
+Brussels,Belgium,50.85,4.35,Europe
+Berlin,Germany,52.52,13.41,Europe
+Hamburg,Germany,53.55,9.99,Europe
+Frankfurt,Germany,50.11,8.68,Europe
+Munich,Germany,48.14,11.58,Europe
+Zurich,Switzerland,47.38,8.54,Europe
+Geneva,Switzerland,46.2,6.14,Europe
+Vienna,Austria,48.21,16.37,Europe
+Prague,Czechia,50.08,14.44,Europe
+Budapest,Hungary,47.5,19.04,Europe
+Warsaw,Poland,52.23,21.01,Europe
+Kraków,Poland,50.06,19.94,Europe
+Copenhagen,Denmark,55.68,12.57,Europe
+Oslo,Norway,59.91,10.75,Europe
+Stockholm,Sweden,59.33,18.07,Europe
+Helsinki,Finland,60.17,24.94,Europe
+Bucharest,Romania,44.43,26.1,Europe
+Istanbul,Türkiye,41.01,28.98,Europe
+Kyiv,Ukraine,50.45,30.52,Europe
+Moscow,Russia,55.76,37.62,Europe
+Saint Petersburg,Russia,59.94,30.31,Europe
+Cairo,Egypt,30.04,31.24,Africa
+Alexandria,Egypt,31.2,29.92,Africa
+Marrakesh,Morocco,31.63,-8.01,Africa
+Casablanca,Morocco,33.57,-7.59,Africa
+Tunis,Tunisia,36.81,10.18,Africa
+Dakar,Senegal,14.72,-17.47,Africa
+Timbuktu,Mali,16.77,-3,Africa
+Accra,Ghana,5.6,-0.19,Africa
+Lagos,Nigeria,6.52,3.38,Africa
+Khartoum,Sudan,15.5,32.56,Africa
+Addis Ababa,Ethiopia,9.03,38.74,Africa
+Nairobi,Kenya,-1.29,36.82,Africa
+Kinshasa,DR Congo,-4.32,15.31,Africa
+Dar es Salaam,Tanzania,-6.79,39.21,Africa
+Luanda,Angola,-8.84,13.23,Africa
+Antananarivo,Madagascar,-18.88,47.51,Africa
+Johannesburg,South Africa,-26.2,28.05,Africa
+Cape Town,South Africa,-33.92,18.42,Africa
+Jerusalem,Israel,31.77,35.21,Asia
+Tel Aviv,Israel,32.09,34.78,Asia
+Beirut,Lebanon,33.89,35.5,Asia
+Amman,Jordan,31.95,35.93,Asia
+Baghdad,Iraq,33.31,44.36,Asia
+Riyadh,Saudi Arabia,24.71,46.68,Asia
+Doha,Qatar,25.29,51.53,Asia
+Dubai,UAE,25.2,55.27,Asia
+Tehran,Iran,35.69,51.39,Asia
+Kabul,Afghanistan,34.56,69.21,Asia
+Karachi,Pakistan,24.86,67.01,Asia
+Lahore,Pakistan,31.55,74.34,Asia
+New Delhi,India,28.61,77.21,Asia
+Mumbai,India,19.08,72.88,Asia
+Kolkata,India,22.57,88.36,Asia
+Bengaluru,India,12.97,77.59,Asia
+Chennai,India,13.08,80.27,Asia
+Kathmandu,Nepal,27.72,85.32,Asia
+Dhaka,Bangladesh,23.81,90.41,Asia
+Colombo,Sri Lanka,6.93,79.86,Asia
+Almaty,Kazakhstan,43.24,76.89,Asia
+Novosibirsk,Russia,55.01,82.93,Asia
+Yakutsk,Russia,62.03,129.73,Asia
+Vladivostok,Russia,43.12,131.89,Asia
+Ulaanbaatar,Mongolia,47.89,106.91,Asia
+Lhasa,China,29.65,91.17,Asia
+Beijing,China,39.9,116.41,Asia
+Harbin,China,45.8,126.53,Asia
+Xi'an,China,34.34,108.94,Asia
+Chengdu,China,30.57,104.07,Asia
+Shanghai,China,31.23,121.47,Asia
+Guangzhou,China,23.13,113.26,Asia
+Shenzhen,China,22.54,114.06,Asia
+Hong Kong,China,22.32,114.17,Asia
+Taipei,Taiwan,25.03,121.57,Asia
+Pyongyang,North Korea,39.04,125.76,Asia
+Seoul,South Korea,37.57,126.98,Asia
+Busan,South Korea,35.18,129.08,Asia
+Tokyo,Japan,35.68,139.69,Asia
+Osaka,Japan,34.69,135.5,Asia
+Kyoto,Japan,35.01,135.77,Asia
+Sapporo,Japan,43.06,141.35,Asia
+Okinawa,Japan,26.21,127.68,Asia
+Hanoi,Vietnam,21.03,105.85,Asia
+Ho Chi Minh City,Vietnam,10.82,106.63,Asia
+Yangon,Myanmar,16.84,96.17,Asia
+Bangkok,Thailand,13.76,100.5,Asia
+Phnom Penh,Cambodia,11.56,104.92,Asia
+Kuala Lumpur,Malaysia,3.14,101.69,Asia
+Singapore,Singapore,1.35,103.82,Asia
+Manila,Philippines,14.6,120.98,Asia
+Jakarta,Indonesia,-6.21,106.85,Asia
+Bali,Indonesia,-8.65,115.22,Asia
+Darwin,Australia,-12.46,130.84,Oceania
+Alice Springs,Australia,-23.7,133.88,Oceania
+Brisbane,Australia,-27.47,153.03,Oceania
+Sydney,Australia,-33.87,151.21,Oceania
+Melbourne,Australia,-37.81,144.96,Oceania
+Adelaide,Australia,-34.93,138.6,Oceania
+Perth,Australia,-31.95,115.86,Oceania
+Hobart,Australia,-42.88,147.33,Oceania
+Auckland,New Zealand,-36.85,174.76,Oceania
+Wellington,New Zealand,-41.29,174.78,Oceania
+Suva,Fiji,-18.14,178.44,Oceania
+Papeete,Tahiti,-17.53,-149.57,Oceania

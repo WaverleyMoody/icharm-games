@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iCHARM Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f3;--surface:#fff;--ink:#15232b;--muted:#5b6b73;--line:#d5dee2;--accent:#0f6b6e;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;color-scheme:light}
+@media (prefers-color-scheme: dark){:root{--bg:#0e171c;--surface:#16232a;--ink:#e4ecef;--muted:#93a5ad;--line:#2a3a42;--accent:#4fbfba;color-scheme:dark}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body)}
+.wrap{max-width:760px;margin:0 auto;padding:32px 16px;display:flex;flex-direction:column;gap:16px}
+h1{font-family:var(--display);font-size:44px;margin:0;line-height:1}
+p{margin:0;color:var(--muted);max-width:65ch}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.g{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px}
+a.g:hover,a.g:focus-visible{border-color:var(--accent);outline:none}
+.g h2{font-family:var(--display);font-size:24px;margin:0}
+.g span{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+.g.soon{opacity:.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>iCHARM Games</h1>
+  <p>Climate and geography puzzles built on real climate data from SDSU's Climate Informatics Lab.</p>
+  <div class="games">
+    <a class="g" href="games/climograph-match/"><span>Daily · Prototype</span><h2>Climograph Match</h2><p>Name the city from its year of temperature and rainfall.</p></a>
+    <div class="g soon"><span>Planned</span><h2>Higher or Lower</h2><p>Which city is wetter, hotter, or swings more by season?</p></div>
+    <div class="g soon"><span>Planned</span><h2>Biome Drop</h2><p>Identify the biome from a satellite tile, then find it on the map.</p></div>
+  </div>
+</div>
+</body>
+</html>

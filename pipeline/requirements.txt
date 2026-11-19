@@ -1,0 +1,4 @@
+xarray>=2023.1
+netCDF4>=1.6
+dask>=2023.1
+numpy>=1.24
