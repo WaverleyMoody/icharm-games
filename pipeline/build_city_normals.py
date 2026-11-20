@@ -75,10 +75,13 @@ def main():
         cell = nearest(clim, lat, lon)
         t = (cell["t2m"].values - 273.15).round(1)
         p = (cell["tp"].values * 1000 * DAYS_IN_MONTH).round(0)
-        out.append({
+        rec = {
             "name": c["name"], "country": c["country"], "lat": lat, "lon": lon,
             "continent": c["continent"], "t": t.tolist(), "p": p.tolist(),
-        })
+        }
+        if c.get("state"):  # US postal abbreviation; only US cities have one
+            rec["state"] = c["state"]
+        out.append(rec)
 
     OUT_JSON.write_text(json.dumps({
         "source": f"ERA5 monthly reanalysis, {args.start}-{args.end} mean, nearest grid cell",

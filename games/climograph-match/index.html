@@ -5,91 +5,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Climograph Match</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/icharm-theme.css">
 <style>
-/* Layout: one centered column; climograph card first, guess box + feedback rows, then map. */
-:root{
-  --bg:#eef2f3; --surface:#ffffff; --ink:#15232b; --muted:#5b6b73; --line:#d5dee2;
-  --accent:#0f6b6e; --temp:#c8452c; --precip:#3b78b8; --land:#c9d5d9; --sea:#e3eaec;
-  --good:#2e8b57; --warn:#d9922b; --bad:#c8452c;
-  --display:"Barlow Condensed","Arial Narrow",sans-serif;
-  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0e171c; --surface:#16232a; --ink:#e4ecef; --muted:#93a5ad; --line:#2a3a42;
-    --accent:#4fbfba; --temp:#f07a5f; --precip:#6ea8e6; --land:#2c3d45; --sea:#13212a;
-    --good:#5cc489; --warn:#efb257; --bad:#f07a5f; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0e171c; --surface:#16232a; --ink:#e4ecef; --muted:#93a5ad; --line:#2a3a42;
-  --accent:#4fbfba; --temp:#f07a5f; --precip:#6ea8e6; --land:#2c3d45; --sea:#13212a;
-  --good:#5cc489; --warn:#efb257; --bad:#f07a5f; color-scheme:dark;
-}
-*{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45}
-.wrap{max-width:760px;margin:0 auto;padding:20px 16px 48px;display:flex;flex-direction:column;gap:16px}
+/* Game-specific layout. Colors, fonts, buttons and cards come from assets/icharm-theme.css. */
+.wrap{max-width:780px;margin:0 auto;padding:36px 16px 56px;display:flex;flex-direction:column;gap:18px}
 header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
-h1{font-family:var(--display);font-weight:700;font-size:40px;line-height:1;margin:0;letter-spacing:.01em;text-wrap:balance}
-.sub{color:var(--muted);font-size:13px;margin-top:4px}
+h1{font-weight:700;font-size:44px;line-height:1.05;margin:6px 0 0;text-wrap:balance}
+.sub{color:var(--muted);font-size:14px;margin-top:6px}
 .modes{display:flex;gap:6px;flex-wrap:wrap}
-button{font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 12px}
-button:hover{border-color:var(--accent)}
-button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-button.on{background:var(--accent);border-color:var(--accent);color:var(--surface)}
-button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
-.cardhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.label{font-family:var(--display);font-size:20px;font-weight:600}
+.cardhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.label{font-size:17px;font-weight:600;letter-spacing:-.015em}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--muted);flex-wrap:wrap;align-items:center}
 .sw{display:inline-block;width:12px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle}
 .sw.line{height:3px}
 .sw.dash{height:0;border-top:2px dashed var(--muted);background:none}
 #chart{width:100%;height:auto;display:block}
 #chart text{fill:var(--muted);font-family:var(--body);font-size:11px}
-.stats{display:flex;gap:20px;flex-wrap:wrap;margin-top:8px;font-size:13px;color:var(--muted)}
-.stats b{font-family:var(--mono);color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
-.hints{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.hint{border:1px dashed var(--line);border-radius:8px;padding:8px 10px;font-size:13px;color:var(--muted);min-height:54px}
-.hint.open{border-style:solid;border-color:var(--accent);color:var(--ink)}
-.hint small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.stats{display:flex;gap:20px;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--muted)}
+.stats b{color:var(--ink);font-weight:600}
+.hints{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hint{border:1px dashed #2f2f3a;border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:var(--muted);min-height:58px;background:rgba(13,13,17,.6)}
+.hint.open{border-style:solid;border-color:var(--accent);color:var(--ink);background:var(--surface)}
+.hint small{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:2px}
 .guessbox{position:relative;display:flex;gap:8px}
-#guess{flex:1;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);min-width:0}
-#sugg{position:absolute;left:0;right:0;top:100%;margin-top:4px;background:var(--surface);border:1px solid var(--line);border-radius:6px;list-style:none;padding:4px 0;margin-left:0;z-index:5;max-height:320px;overflow-y:auto;display:none}
-#sugg li{padding:6px 12px;cursor:pointer;font-size:14px}
-#sugg li.opt[aria-selected="true"],#sugg li.opt:hover{background:var(--sea)}
-#sugg li.opt{padding-left:24px}
-#sugg li.hdr{cursor:default;font-size:12px;color:var(--muted);padding:6px 12px 2px;background:none}
-#sugg li.hdr.cont{font-family:var(--display);font-size:15px;font-weight:600;color:var(--accent);padding-top:10px;text-transform:uppercase;letter-spacing:.04em}
+#guess{flex:1;padding:11px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--ink);min-width:0}
+#guess::placeholder{color:#6e6e79}
+#sugg{position:absolute;left:0;right:0;top:100%;margin-top:6px;background:var(--surface-2);border:1px solid #33333f;border-radius:var(--radius-sm);list-style:none;padding:4px 0;margin-left:0;z-index:5;max-height:320px;overflow-y:auto;display:none;box-shadow:0 18px 40px rgba(0,0,0,.6)}
+#sugg li{padding:7px 14px;cursor:pointer;font-size:14px}
+#sugg li.opt[aria-selected="true"],#sugg li.opt:hover{background:rgba(91,95,232,.22)}
+#sugg li.opt{padding-left:26px}
+#sugg li.hdr{cursor:default;font-size:12px;color:var(--muted);padding:6px 14px 2px;background:none}
+#sugg li.hdr.state{padding:4px 14px 2px 24px;font-weight:600;color:var(--ink)}
+#sugg li.opt.instate{padding-left:36px}
+#sugg li .st{color:var(--muted)}
+#sugg li.hdr.cont{font-size:11px;font-weight:600;color:var(--accent);padding-top:10px;text-transform:uppercase;letter-spacing:.14em}
 .msg{font-size:13px;color:var(--bad);min-height:18px}
 .rows{display:flex;flex-direction:column;gap:6px}
-.row{display:grid;grid-template-columns:28px 1fr 88px 40px 64px;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:14px;cursor:pointer;background:var(--surface)}
+.row{display:grid;grid-template-columns:28px 1fr 88px 40px 64px;gap:8px;align-items:center;padding:9px 12px;border:1px solid var(--line);border-radius:var(--radius-sm);font-size:14px;cursor:pointer;background:var(--surface-2)}
+.row:hover{border-color:#3a3a46}
 .row.sel{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
-.row.empty{cursor:default;color:var(--line);min-height:40px}
-.row .n{font-family:var(--mono);color:var(--muted)}
-.row .num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.row.empty{cursor:default;color:#3a3a46;min-height:42px;background:transparent}
+.row .n{color:var(--muted);font-weight:600}
+.row .num{text-align:right}
 .row .arr{font-size:18px;text-align:center}
-.pill{font-family:var(--mono);font-size:12px;border-radius:999px;padding:2px 8px;text-align:center;color:#fff}
+.pill{font-size:12px;font-weight:600;border-radius:999px;padding:2px 9px;text-align:center;color:#0a0a0c}
 .result{display:none;flex-direction:column;gap:10px}
 .result.show{display:flex}
-.result h2{font-family:var(--display);font-size:28px;margin:0;line-height:1.1}
-.result p{margin:0;max-width:65ch}
+.result h2{font-size:28px;font-weight:700;margin:0;line-height:1.1}
+.result p{margin:0;max-width:65ch;color:var(--muted)}
 .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 #copied{font-size:13px;color:var(--good)}
-#map{width:100%;height:auto;display:block;border-radius:6px;background:var(--sea)}
+#map{width:100%;height:auto;display:block;border-radius:var(--radius-sm);background:radial-gradient(ellipse at 50% 40%,var(--sea-hi),var(--sea) 75%);border:1px solid var(--line)}
 #map .land{fill:var(--land)}
-#map text{font-family:var(--mono);font-size:14px;fill:#fff}
-.tally{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-.tally b{display:block;font-family:var(--display);font-size:26px;color:var(--ink);line-height:1}
+#map text{font-size:14px;font-weight:600;fill:#fff}
+.tally{display:flex;gap:22px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.tally b{display:block;font-size:26px;font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
 footer{font-size:12px;color:var(--muted);max-width:65ch}
 .unit{display:flex;gap:4px}
-.unit button{padding:3px 8px;font-size:12px}
+.unit button{padding:3px 9px;font-size:12px}
 @media (max-width:520px){
-  h1{font-size:32px}
+  .site-nav{padding:12px 14px;gap:12px}
+  .site-nav .section{display:none}
+  h1{font-size:34px}
   .hints{grid-template-columns:1fr}
   .row{grid-template-columns:22px 1fr 70px 30px 52px;font-size:13px;padding:8px}
 }
@@ -97,10 +75,15 @@ footer{font-size:12px;color:var(--muted);max-width:65ch}
 </style>
 </head>
 <body>
+<div class="site-nav">
+  <a class="wordmark" href="../../">iCHARM</a><span class="sep"></span><span class="section">Games</span>
+  <nav><a href="../../">Home</a><a href="./" aria-current="page">Climograph Match</a></nav>
+</div>
 <div class="wrap">
   <header>
     <div>
-      <h1>Climograph Match</h1>
+      <div class="eyebrow">SDSU Climate Informatics Lab</div>
+      <h1>Climograph <span class="grad">Match</span></h1>
       <div class="sub" id="sub">iCHARM daily climate puzzle</div>
     </div>
     <div class="modes">
@@ -128,14 +111,14 @@ footer{font-size:12px;color:var(--muted);max-width:65ch}
   </section>
 
   <section class="hints" aria-label="Hints">
-    <div class="hint" id="h1"><small>Hemisphere</small>Unlocks after guess 2</div>
-    <div class="hint" id="h2"><small>Continent</small>Unlocks after guess 3</div>
-    <div class="hint" id="h3"><small>Köppen class</small>Unlocks after guess 4</div>
+    <div class="hint" id="h1"><small>Köppen class</small>Unlocks after guess 2</div>
+    <div class="hint" id="h2"><small>Hemisphere</small>Unlocks after guess 3</div>
+    <div class="hint" id="h3"><small>Continent</small>Unlocks after guess 4</div>
   </section>
 
   <section class="card" style="display:flex;flex-direction:column;gap:10px">
     <form class="guessbox" id="form" autocomplete="off">
-      <input id="guess" type="text" placeholder="Search a city, country or continent…" aria-label="City guess" aria-autocomplete="list" aria-controls="sugg">
+      <input id="guess" type="text" placeholder="Search a city, state, country or continent…" aria-label="City guess" aria-autocomplete="list" aria-controls="sugg">
       <button type="button" id="browse" aria-label="Browse all cities">Browse ▾</button>
       <button class="primary" type="submit" id="go" style="width:82px">Guess</button>
       <ul id="sugg" role="listbox"></ul>
@@ -184,6 +167,10 @@ let C=[];
 
 
 const KOPPEN={EF:"Ice cap",BWk:"Cold desert",BSh:"Hot semi-arid",Csc:"Cold-summer Mediterranean",Cwc:"Subpolar oceanic, dry winter",Cfc:"Subpolar oceanic",Dsa:"Mediterranean-influenced continental",Dsb:"Mediterranean-influenced continental",Dsc:"Mediterranean-influenced subarctic",Dwc:"Monsoon-influenced subarctic",Dwd:"Extremely cold monsoon subarctic",Dfd:"Extremely cold subarctic",Af:"Tropical rainforest",Am:"Tropical monsoon",Aw:"Tropical savanna",As:"Tropical savanna, dry summer",BWh:"Hot desert",BSk:"Cold semi-arid",Csa:"Hot-summer Mediterranean",Csb:"Warm-summer Mediterranean",Cwa:"Monsoon-influenced humid subtropical",Cwb:"Subtropical highland",Cfa:"Humid subtropical",Cfb:"Oceanic",Cfc:"Subpolar oceanic",Dfa:"Hot-summer humid continental",Dfb:"Warm-summer humid continental",Dfc:"Subarctic",Dfd:"Extremely cold subarctic",Dwa:"Monsoon-influenced continental",Dwb:"Monsoon-influenced warm-summer continental",ET:"Tundra"};
+const STATES={AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",DC:"District of Columbia",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming"};
+const stName=c=>c.state?STATES[c.state]:"";
+// A query matches a US state by name prefix ("cali") or exact postal code ("ca").
+const stateMatch=(c,q)=>!!c.state&&(norm(stName(c)).startsWith(q)||(q.length===2&&c.state.toLowerCase()===q));
 const CONTS=["North America","South America","Europe","Africa","Asia","Oceania"];
 const MAXG=6, MONTHS="JFMAMJJASOND".split("");
 const $=id=>document.getElementById(id);
@@ -247,7 +234,7 @@ function drawChart(){
 
 function drawHints(){
   const tg=C[S.idx],n=S.done?99:S.guesses.length;
-  const H=[[2,"Hemisphere",(tg.lat>=0?"Northern":"Southern")+" Hemisphere"],[3,"Continent",tg.cont],[4,"Köppen class",tg.k+" · "+KOPPEN[tg.k]]];
+  const H=[[2,"Köppen class",tg.k+" · "+KOPPEN[tg.k]],[3,"Hemisphere",(tg.lat>=0?"Northern":"Southern")+" Hemisphere"],[4,"Continent",tg.cont]];
   H.forEach(([u,lab,val],i)=>{const el=$("h"+(i+1)),open=n>=u;el.className="hint"+(open?" open":"");el.innerHTML=`<small>${lab}</small>${open?val:"Unlocks after guess "+u}`});
 }
 
@@ -314,15 +301,16 @@ function norm(s){return s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase()}
 function showSugg(){
   const q=norm($("guess").value.trim());
   // Empty box: browse everything. Otherwise match city, country or continent.
-  matches=C.map((c,i)=>i).filter(i=>!S.guesses.includes(i)).filter(i=>!q||norm(C[i].name).includes(q)||norm(C[i].country).includes(q)||norm(C[i].cont).startsWith(q));
-  matches.sort((a,b)=>CONTS.indexOf(C[a].cont)-CONTS.indexOf(C[b].cont)||C[a].country.localeCompare(C[b].country)||C[a].name.localeCompare(C[b].name));
+  matches=C.map((c,i)=>i).filter(i=>!S.guesses.includes(i)).filter(i=>!q||norm(C[i].name).includes(q)||norm(C[i].country).includes(q)||norm(C[i].cont).startsWith(q)||stateMatch(C[i],q));
+  matches.sort((a,b)=>CONTS.indexOf(C[a].cont)-CONTS.indexOf(C[b].cont)||C[a].country.localeCompare(C[b].country)||stName(C[a]).localeCompare(stName(C[b]))||C[a].name.localeCompare(C[b].name));
   sel=0;const u=$("sugg");
-  if(!matches.length){u.innerHTML=`<li class="hdr">No matching city. Try a country or continent.</li>`;u.style.display="block";return}
-  let h="",lastC="",lastK="";
+  if(!matches.length){u.innerHTML=`<li class="hdr">No matching city. Try a state, country or continent.</li>`;u.style.display="block";return}
+  let h="",lastC="",lastK="",lastS="";
   matches.forEach((i,k)=>{const c=C[i];
-    if(c.cont!==lastC){h+=`<li class="hdr cont">${c.cont}</li>`;lastC=c.cont;lastK=""}
-    if(c.country!==lastK){h+=`<li class="hdr">${c.country}</li>`;lastK=c.country}
-    h+=`<li role="option" class="opt" aria-selected="${k===sel}" data-i="${i}" data-k="${k}">${c.name}</li>`});
+    if(c.cont!==lastC){h+=`<li class="hdr cont">${c.cont}</li>`;lastC=c.cont;lastK="";lastS=""}
+    if(c.country!==lastK){h+=`<li class="hdr">${c.country}</li>`;lastK=c.country;lastS=""}
+    if(c.state&&c.state!==lastS){h+=`<li class="hdr state">${stName(c)}</li>`;lastS=c.state}
+    h+=`<li role="option" class="opt${c.state?" instate":""}" aria-selected="${k===sel}" data-i="${i}" data-k="${k}">${c.name}${c.state&&c.state!=="DC"?`<span class="st">, ${c.state}</span>`:""}</li>`});
   u.innerHTML=h;u.style.display="block";
   u.querySelectorAll("li.opt").forEach(li=>li.onmousedown=e=>{e.preventDefault();submit(C[+li.dataset.i].name)});
 }
@@ -353,7 +341,7 @@ $("share").onclick=async()=>{
 };
 const DATA_URL="../../data/cities.json";
 fetch(DATA_URL).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(d=>{
-  C=d.cities.map(c=>({...c,k:koppen(c)}));
+  C=d.cities.map(c=>({...c,cont:c.continent,k:koppen(c)}));
   if(d.source==="placeholder")$("srcnote").textContent="Placeholder data: approximate monthly normals entered by hand. Run the data pipeline to replace them.";
   else $("srcnote").textContent="Data: "+d.source+".";
   setupOrder();load();

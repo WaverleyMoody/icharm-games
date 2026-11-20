@@ -23,11 +23,17 @@ python -m http.server 8000
 
 ```
 index.html                    Landing page listing the games
-games/<game>/index.html       Each game is one self-contained page
+assets/icharm-theme.css       Shared iCHARM look (tokens, nav, buttons, cards); every page links it
+games/<game>/index.html       One page per game; links the shared theme, adds game-specific CSS
 data/cities.json              Shared city list + monthly climate normals
 pipeline/cities.csv           The 200 cities (name, country, lat, lon, continent)
+pipeline/download_era5.py     Downloads the ERA5 monthly t2m + tp file from Copernicus
 pipeline/build_city_normals.py  Rebuilds data/cities.json from ERA5
 ```
+
+## Style
+
+All pages share `assets/icharm-theme.css`, which mirrors the iCHARM platform and El Niño Resource Library (dark starfield canvas, Inter, gradient wordmark, indigo primary buttons). New games should link it and use its CSS variables (`--surface`, `--line`, `--accent`, `--btn`, `--grad`) instead of defining their own colors.
 
 ## Data
 
@@ -35,8 +41,11 @@ pipeline/build_city_normals.py  Rebuilds data/cities.json from ERA5
 
 ```bash
 pip install -r pipeline/requirements.txt
-python pipeline/build_city_normals.py /path/to/era5/*.nc --start 1991 --end 2020
+python pipeline/download_era5.py            # needs a CDS account + ~/.cdsapirc; see the script's docstring
+python pipeline/build_city_normals.py pipeline/era5/era5_monthly_t2m_tp_1991_2020.nc
 ```
+
+The ERA5 file stays local (`*.nc` is git-ignored); only the small `data/cities.json` is committed and served to players.
 
 The script expects ERA5 monthly averaged reanalysis files containing `t2m` and `tp`. To change which cities are in the game, edit `pipeline/cities.csv` and rerun the script.
 
